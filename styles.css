@@ -1116,3 +1116,35 @@ a{
     box-shadow:
         0 0 24px rgba(77,230,255,.18);
 }
+/* ===== CINEMATIC TRANSITION ===== */
+
+.intro-screen{
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        filter .8s ease;
+}
+
+.intro-screen.hide-scene{
+    opacity:0;
+    transform:scale(1.03);
+    filter:blur(8px);
+    pointer-events:none;
+}
+
+.mission-screen{
+    opacity:0;
+    transform:translateY(50px);
+    filter:blur(10px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        filter .8s ease;
+}
+
+.mission-screen.show-scene{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+}
