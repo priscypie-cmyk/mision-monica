@@ -1588,3 +1588,10 @@ a{
 .panel-header h2{
     margin-top:14px;
 }
+.event-card strong small{
+    display:block;
+    margin-top:2px;
+    font-size:.82em;
+    font-weight:600;
+    color:rgba(255,255,255,.75);
+}
