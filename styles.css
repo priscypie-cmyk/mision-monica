@@ -233,3 +233,32 @@ body:after{
     transform:translateY(-10px);
   }
 }
+/* AJUSTE DE ESPACIADO PORTADA K-POP */
+
+#intro{
+  gap:18px;
+}
+
+#intro h1{
+  margin:20px 0 10px;
+  line-height:1.15;
+}
+
+#intro h2{
+  margin:10px 0 20px;
+}
+
+#intro .subtitle{
+  max-width:320px;
+  margin:20px auto;
+  line-height:1.7;
+}
+
+.hero-placeholder{
+  height:160px;
+  margin:15px 0;
+}
+
+#startButton{
+  margin-top:25px;
+}
