@@ -5,7 +5,8 @@
 body{
   margin:0;
   font-family:Poppins,sans-serif;
-  background:radial-gradient(circle at top,#6d3cff,#24104d 35%,#0b0620 70%,#04020c);
+  background:
+    radial-gradient(circle at top,#ff4fd8,#6d3cff 35%,#12001f 75%);
   color:#fff;
   overflow-x:hidden;
 }
@@ -158,4 +159,13 @@ button:hover,a:hover{
   100% {
     transform:scale(1);
   }
+}
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at 20% 20%,rgba(255,0,200,.25),transparent 25%),
+  radial-gradient(circle at 80% 30%,rgba(120,80,255,.25),transparent 25%);
+  pointer-events:none;
 }
