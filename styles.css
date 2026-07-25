@@ -1659,3 +1659,36 @@ a{
         max-height: 190px;
     }
 }
+.mission-stars{
+
+    display:inline-block;
+
+    color:#FFD54A;
+
+    letter-spacing:.12em;
+
+    text-shadow:
+        0 0 6px #FFD54A,
+        0 0 12px #FFB300,
+        0 0 24px rgba(255,213,74,.6);
+
+    animation:starsGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes starsGlow{
+
+    0%,100%{
+
+        transform:scale(1);
+        filter:brightness(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.04);
+        filter:brightness(1.3);
+
+    }
+
+}
