@@ -1,33 +1,139 @@
-const intro = document.getElementById('intro');
-const main = document.getElementById('main');
+document.addEventListener("DOMContentLoaded", () => {
+  const loadingScreen = document.getElementById("loadingScreen");
+  const loadingProgress = document.getElementById("loadingProgress");
+  const loadingMessage = document.getElementById("loadingMessage");
 
-main.classList.add('hidden');
+  const intro = document.getElementById("intro");
+  const main = document.getElementById("main");
+  const startButton = document.getElementById("startButton");
+  const missionPanel = document.querySelector(".mission-panel");
 
-document.getElementById('startButton').onclick = () => {
-  intro.classList.add('hidden');
-  main.classList.remove('hidden');
-};
+  const daysElement = document.getElementById("days");
+  const hoursElement = document.getElementById("hours");
+  const minutesElement = document.getElementById("minutes");
+  const secondsElement = document.getElementById("seconds");
 
-const target = new Date('2026-08-11T15:00:00');
+  const countdown = document.getElementById("countdown");
+  const countdownFinished = document.getElementById("countdownFinished");
 
-const countdown = document.getElementById('countdown');
+  /* ==========================================
+     PANTALLA DE CARGA
+  ========================================== */
 
-setInterval(() => {
-  let d = target - new Date();
+  let progress = 0;
 
-  if (d < 0) {
-    countdown.innerHTML = '¡La misión ha comenzado!';
-    return;
+  const loadingInterval = setInterval(() => {
+    progress += Math.floor(Math.random() * 9) + 4;
+
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(loadingInterval);
+
+      loadingProgress.style.width = "100%";
+      loadingMessage.textContent = "Conexión establecida ✦";
+
+      setTimeout(() => {
+        loadingScreen.classList.add("fade-out");
+
+        setTimeout(() => {
+          loadingScreen.classList.add("hidden");
+          intro.classList.remove("hidden");
+          intro.classList.add("reveal-screen");
+        }, 600);
+      }, 500);
+
+      return;
+    }
+
+    loadingProgress.style.width = ${progress}%;
+
+    if (progress < 35) {
+      loadingMessage.textContent = "Preparando la misión";
+    } else if (progress < 70) {
+      loadingMessage.textContent = "Localizando agentes";
+    } else {
+      loadingMessage.textContent = "Activando sistema K-pop";
+    }
+  }, 120);
+
+
+  /* ==========================================
+     BOTÓN ACTIVAR MISIÓN
+  ========================================== */
+
+  startButton.addEventListener("click", () => {
+    startButton.disabled = true;
+    intro.classList.add("fade-out");
+
+    setTimeout(() => {
+      intro.classList.add("hidden");
+      intro.classList.remove("fade-out");
+
+      main.classList.remove("hidden");
+      main.classList.add("reveal-screen");
+
+      if (missionPanel) {
+        missionPanel.classList.add("panel-enter");
+      }
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }, 600);
+  });
+
+
+  /* ==========================================
+     CUENTA REGRESIVA
+     11 DE AGOSTO DE 2026 · 3:00 PM
+  ========================================== */
+
+  const eventDate = new Date("2026-08-11T15:00:00-06:00");
+
+  function formatNumber(number) {
+    return String(number).padStart(2, "0");
   }
 
-  let days = Math.floor(d / 86400000);
-  let hours = Math.floor((d % 86400000) / 3600000);
-  let minutes = Math.floor((d % 3600000) / 60000);
-  let seconds = Math.floor((d % 60000) / 1000);
+  function updateCountdown() {
+    const now = new Date();
+    const remainingTime = eventDate.getTime() - now.getTime();
 
-  document.getElementById('days').textContent = days;
-  document.getElementById('hours').textContent = hours;
-  document.getElementById('minutes').textContent = minutes;
-  document.getElementById('seconds').textContent = seconds;
+    if (remainingTime <= 0) {
+      clearInterval(countdownInterval);
 
-}, 1000);
+      countdown.classList.add("hidden");
+      countdownFinished.classList.remove("hidden");
+      countdownFinished.textContent =
+        "🎉 ¡La misión ha comenzado! Nos vemos en Empire Salón 🎉";
+
+      return;
+    }
+
+    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+      (remainingTime / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+      (remainingTime / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+      (remainingTime / 1000) % 60
+    );
+
+    daysElement.textContent = formatNumber(days);
+    hoursElement.textContent = formatNumber(hours);
+    minutesElement.textContent = formatNumber(minutes);
+    secondsElement.textContent = formatNumber(seconds);
+  }
+
+  updateCountdown();
+
+  const countdownInterval = setInterval(
+    updateCountdown,
+    1000
+  );
+});
