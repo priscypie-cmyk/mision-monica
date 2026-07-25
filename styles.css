@@ -109,3 +109,53 @@ button:hover,a:hover{
   background:rgba(255,255,255,.12);
   text-align:center;
 }
+
+/* ANIMACIONES DE ENTRADA */
+
+#intro h1 {
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+#intro .top-text {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+#intro .subtitle {
+  animation: fadeIn 2s ease forwards;
+}
+
+#startButton {
+  animation: pulseButton 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow:0 0 10px rgba(192,132,252,.5);
+  }
+  to {
+    text-shadow:0 0 30px rgba(192,132,252,1);
+  }
+}
+
+@keyframes pulseButton {
+  0% {
+    transform:scale(1);
+  }
+  50% {
+    transform:scale(1.05);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
