@@ -294,3 +294,47 @@ body:after{
   background:radial-gradient(circle,rgba(255,79,216,.35),transparent 70%);
   z-index:-1;
 }
+/* PASE VIP K-POP */
+
+#main .card{
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,79,216,.18),
+    rgba(139,92,246,.18)
+  ),
+  rgba(255,255,255,.10);
+
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:
+  0 0 40px rgba(255,79,216,.25),
+  0 20px 60px rgba(0,0,0,.45);
+}
+
+
+#main .badge{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#ff4fd8,#8b5cf6);
+  box-shadow:0 0 20px rgba(255,79,216,.6);
+  letter-spacing:2px;
+}
+
+
+#main h2{
+  font-size:40px;
+  letter-spacing:4px;
+  margin:18px 0 5px;
+}
+
+
+#main h3{
+  letter-spacing:3px;
+}
+
+
+.invite{
+  line-height:1.7;
+  opacity:.95;
+}
