@@ -1595,3 +1595,57 @@ a{
     font-weight:600;
     color:rgba(255,255,255,.75);
 }
+/* =========================================
+   CORRECCIÓN DE ESCALADO EN ANDROID
+========================================= */
+
+html,
+body{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+}
+
+/* Tarjetas de fecha, hora y ubicación */
+
+.event-card > .event-icon{
+    width:32px;
+    height:32px;
+    flex:0 0 32px;
+
+    display:grid;
+    place-items:center;
+
+    font-size:24px !important;
+    line-height:1 !important;
+}
+
+/* Botones de WhatsApp, ubicación y regalos */
+
+.action-button > .action-icon{
+    width:47px !important;
+    height:47px !important;
+    flex:0 0 47px !important;
+
+    font-size:initial !important;
+    line-height:1 !important;
+}
+
+.action-button > .action-icon svg{
+    width:26px !important;
+    height:26px !important;
+}
+
+/* Evita que Android agrande el texto */
+
+.event-card strong{
+    font-size:15px !important;
+    line-height:1.25;
+}
+
+.action-button strong{
+    font-size:15px !important;
+}
+
+.action-button p{
+    font-size:13px !important;
+}
