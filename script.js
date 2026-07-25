@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const intro = document.getElementById("intro");
   const main = document.getElementById("main");
   const startButton = document.getElementById("startButton");
-
+  const missionAudio = document.getElementById("missionAudio");
+  
   let progress = 0;
 
   const loadingInterval = setInterval(function () {
@@ -32,7 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 100);
 
   startButton.addEventListener("click", () => {
-
+    missionAudio.volume = 0.35;
+    missionAudio.play().catch(() => {});
+    
     intro.classList.add("hide-scene");
 
     setTimeout(() => {
