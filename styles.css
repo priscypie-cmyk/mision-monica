@@ -1511,3 +1511,37 @@ a{
     }
 
 }
+/* AJUSTE FINAL DEL OBJETIVO */
+
+.mission-introduction .mission-stars{
+    display:inline-block;
+    color:#FFD54A !important;
+    letter-spacing:.08em;
+
+    text-shadow:
+        0 0 6px rgba(255,213,74,.95),
+        0 0 14px rgba(255,179,0,.85),
+        0 0 28px rgba(255,213,74,.6);
+
+    animation:starsGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes starsGlow{
+    0%,
+    100%{
+        transform:scale(1);
+        filter:brightness(1);
+        opacity:.9;
+    }
+
+    50%{
+        transform:scale(1.045);
+        filter:brightness(1.55);
+        opacity:1;
+    }
+}
+/* ESPACIO ENTRE K-POP WARRIORS Y MÓNICA */
+
+.panel-header h2{
+    margin-top:14px;
+}
