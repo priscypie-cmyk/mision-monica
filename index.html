@@ -2,203 +2,275 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Misión Mónica | Level 5</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta
+    name="description"
+    content="Invitación especial para celebrar el Level 5 de Mónica."
+  >
+
+  <title>Misión Mónica · Level 5</title>
 
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div id="particles"></div>
+  <!-- PANTALLA DE CONEXIÓN -->
 
-<section id="intro" class="screen active">
+  <section id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
 
-    <div class="glass"></div>
+      <p class="loading-code">K-POP WARRIORS SYSTEM</p>
 
-    <p class="top-text">
-        TRANSMISIÓN ENTRANTE
-    </p>
+      <h1>Conectando con el<br>cuartel general...</h1>
 
-  <h1>
-    ✦ MISIÓN ✦<br>
-    MÓNICA
-</h1>
+      <div class="loading-bar">
+        <span id="loadingProgress"></span>
+      </div>
 
-<h2>
-    ⭐ LEVEL 5 ⭐
-</h2>
-<div class="hero-image">
-  <img src="guerreras-monica.jpeg" alt="Guerreras K-pop de Misión Mónica">
-</div>
-    <p class="subtitle">
-        Has sido seleccionado para una misión muy especial...
-    </p>
+      <p id="loadingMessage" class="loading-message">
+        Preparando la misión
+      </p>
 
-    <button id="startButton">
-        ACEPTAR MISIÓN
-    </button>
+    </div>
+  </section>
 
-</section>
 
+  <!-- PORTADA PRINCIPAL -->
 
-<section id="main" class="screen hidden">
+  <main id="intro" class="screen intro-screen hidden">
 
-<div class="card">
+    <div class="intro-glow intro-glow-one"></div>
+    <div class="intro-glow intro-glow-two"></div>
 
-<span class="badge">
-MISIÓN CONFIRMADA
-</span>
+    <div class="intro-content">
 
-<h2>MÓNICA</h2>
+      <p class="mission-label">✦ MISIÓN ESPECIAL ✦</p>
 
-<h3>LEVEL 5</h3>
-<p class="event-name">
-  ✦ K-POP WARRIOR PARTY ✦
-</p>
-<p class="invite">
+      <h1 class="main-title">
+        <span>MISIÓN</span>
+        <strong>MÓNICA</strong>
+      </h1>
 
-Prepárate para una tarde llena de diversión, aventuras y momentos inolvidables.
+      <p class="level-title">⭐ LEVEL 5 ⭐</p>
 
-</p>
+      <div class="hero-image">
+        <img
+          src="guerreras-monica.jpeg"
+          alt="Guerreras K-pop de Misión Mónica"
+        >
+      </div>
 
+      <div class="intro-copy">
+        <p>Una nueva aventura K-pop está por comenzar.</p>
+        <strong>Tu presencia es necesaria para completar la misión.</strong>
+      </div>
 
-<div class="info">
+      <button id="startButton" class="primary-button" type="button">
+        <span>⚔️</span>
+        ACTIVAR MISIÓN
+      </button>
 
-<div class="row">
+      <p class="tap-message">Toca el botón para ingresar</p>
 
-<div class="emoji">📅</div>
+    </div>
 
-<div>
+  </main>
 
-<strong>Fecha</strong>
 
-<p>11 de agosto</p>
+  <!-- PANEL DE LA MISIÓN -->
 
-</div>
+  <section id="main" class="screen mission-screen hidden">
 
-</div>
+    <div class="mission-background"></div>
 
+    <div class="mission-panel">
 
-<div class="row">
+      <header class="panel-header">
 
-<div class="emoji">🕒</div>
+        <p class="system-status">
+          <span></span>
+          MISIÓN ACTIVADA
+        </p>
 
-<div>
+        <p class="panel-small-title">K-POP WARRIORS</p>
 
-<strong>Hora</strong>
+        <h2>MÓNICA</h2>
 
-<p>3:00 PM</p>
+        <p class="panel-level">⭐ LEVEL 5 ⭐</p>
 
-</div>
+      </header>
 
-</div>
 
+      <div class="mission-introduction">
+        <p>
+          Has sido seleccionada para celebrar una misión muy especial:
+        </p>
 
-<div class="row">
+        <strong>¡Los 5 años de Mónica!</strong>
+      </div>
 
-<div class="emoji">📍</div>
 
-<div>
+      <!-- INFORMACIÓN DEL EVENTO -->
 
-<strong>Lugar</strong>
+      <div class="event-grid">
 
-<p>Empire Salón</p>
+        <article class="event-card">
+          <span class="event-icon">📅</span>
 
-</div>
+          <div>
+            <p>FECHA</p>
+            <strong>11 de agosto</strong>
+          </div>
+        </article>
 
-</div>
 
-</div>
+        <article class="event-card">
+          <span class="event-icon">🕒</span>
 
+          <div>
+            <p>HORA</p>
+            <strong>3:00 PM</strong>
+          </div>
+        </article>
 
-<h3 class="countTitle">
 
-FALTAN
+        <article class="event-card event-card-full">
+          <span class="event-icon">📍</span>
 
-</h3>
+          <div>
+            <p>UBICACIÓN</p>
+            <strong>Empire Salón</strong>
+          </div>
+        </article>
 
+      </div>
 
-<div id="countdown">
 
-<div>
+      <!-- CUENTA REGRESIVA -->
 
-<span id="days">00</span>
+      <section class="countdown-section">
 
-<small>Días</small>
+        <p class="countdown-label">TIEMPO RESTANTE PARA LA MISIÓN</p>
 
-</div>
+        <div id="countdown" class="countdown">
 
-<div>
+          <div class="time-box">
+            <span id="days">00</span>
+            <small>DÍAS</small>
+          </div>
 
-<span id="hours">00</span>
+          <div class="time-divider">:</div>
 
-<small>Horas</small>
+          <div class="time-box">
+            <span id="hours">00</span>
+            <small>HORAS</small>
+          </div>
 
-</div>
+          <div class="time-divider">:</div>
 
-<div>
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <small>MIN</small>
+          </div>
 
-<span id="minutes">00</span>
+          <div class="time-divider">:</div>
 
-<small>Min</small>
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <small>SEG</small>
+          </div>
 
-</div>
+        </div>
 
-<div>
+        <p id="countdownFinished" class="countdown-finished hidden">
+          ✨ ¡La misión ha comenzado! ✨
+        </p>
 
-<span id="seconds">00</span>
+      </section>
 
-<small>Seg</small>
 
-</div>
+      <!-- BOTONES -->
 
-</div>
+      <div class="action-buttons">
 
+        <a
+          class="action-button whatsapp-button"
+          href="https://wa.me/528334298250?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20Misi%C3%B3n%20M%C3%B3nica%20Level%205%20%E2%9C%A8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>💬</span>
 
-<div class="buttons">
+          <div>
+            <small>CONFIRMACIÓN</small>
+            <strong>Confirmar asistencia</strong>
+          </div>
+        </a>
 
-<a
-class="btn location"
-target="_blank"
-href="https://maps.app.goo.gl/B42bzDpc43VBii756?g_st=ic">
 
-📍 Ver ubicación
+        <a
+          class="action-button location-button"
+          href="https://maps.app.goo.gl/B42bzDpc43VBii756?g_st=ic"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>📍</span>
 
-</a>
+          <div>
+            <small>COORDENADAS</small>
+            <strong>Ver ubicación</strong>
+          </div>
+        </a>
 
 
-<a
-class="btn gift"
-target="_blank"
-href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60013924">
+        <a
+          class="action-button gift-button"
+          href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60013924"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>🎁</span>
 
-🎁 Mesa de regalos
+          <div>
+            <small>REGALOS</small>
+            <strong>Mesa Liverpool</strong>
+          </div>
+        </a>
 
-</a>
+      </div>
 
 
-<a
-class="btn whatsapp"
-target="_blank"
-href="https://wa.me/528334298250">
+      <!-- MENSAJE FINAL -->
 
-💬 Confirmar asistencia
+      <footer class="panel-footer">
 
-</a>
+        <div class="vip-badge">
+          <span>★</span>
+          PASE VIP
+          <span>★</span>
+        </div>
 
-</div>
+        <p>
+          Trae tu traje de baño y prepárate para una tarde llena de música,
+          diversión y aventuras.
+        </p>
 
-</div>
+        <strong>¡Te esperamos, agente!</strong>
 
-</section>
+      </footer>
 
-<script src="script.js"></script>
+    </div>
+
+  </section>
+
+
+  <script src="script.js"></script>
 
 </body>
 </html>
