@@ -373,3 +373,13 @@ body:after{
 #main .emoji{
   font-size:28px;
 }
+/* NOMBRE DEL EVENTO */
+
+.event-name{
+  margin:15px 0;
+  font-size:14px;
+  letter-spacing:3px;
+  font-weight:700;
+  color:#ffd6ff;
+  text-shadow:0 0 15px rgba(255,79,216,.8);
+}
