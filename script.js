@@ -31,11 +31,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 100);
 
-  startButton.addEventListener("click", function () {
-    intro.classList.add("hidden");
-    main.classList.remove("hidden");
-    window.scrollTo(0, 0);
-  });
+  startButton.addEventListener("click", () => {
+
+    intro.classList.add("hide-scene");
+
+    setTimeout(() => {
+
+        intro.classList.add("hidden");
+
+        main.classList.remove("hidden");
+
+        requestAnimationFrame(() => {
+            main.classList.add("show-scene");
+        });
+
+    },700);
+
+});
 
   const eventDate = new Date("2026-08-11T15:00:00-06:00");
 
