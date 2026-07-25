@@ -22,7 +22,50 @@
   --shadow-dark:0 20px 60px rgba(0,0,0,.55);
 }
 
+/* AJUSTE DE TAMAÑOS EN CELULAR */
 
+@media (max-width:480px){
+
+    .event-card{
+        min-height:95px;
+        padding:15px 13px;
+    }
+
+    .event-card strong{
+        font-size:15px;
+        line-height:1.25;
+    }
+
+    .event-card p{
+        font-size:10px;
+    }
+
+    .event-icon{
+        font-size:28px;
+    }
+
+    .time-box{
+        width:61px;
+    }
+
+    .time-box span{
+        font-size:24px;
+        padding:10px 4px;
+    }
+
+    .action-button{
+        min-height:72px;
+        padding:14px 16px;
+    }
+
+    .action-button strong{
+        font-size:15px;
+    }
+
+    .action-button p{
+        font-size:.82rem;
+    }
+}
 /* ---------- REINICIO GENERAL ---------- */
 
 *{
