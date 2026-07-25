@@ -169,3 +169,50 @@ body:after{
   radial-gradient(circle at 80% 30%,rgba(120,80,255,.25),transparent 25%);
   pointer-events:none;
 }
+/* BOTÓN VIP K-POP */
+
+#startButton{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(90deg,#ff4fd8,#8b5cf6);
+  box-shadow:0 0 20px rgba(255,79,216,.7);
+  letter-spacing:1px;
+  animation:vipPulse 2s infinite;
+}
+
+#startButton::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.7),
+    transparent
+  );
+  animation:shine 3s infinite;
+}
+
+@keyframes vipPulse{
+  0%{
+    box-shadow:0 0 15px rgba(255,79,216,.5);
+  }
+  50%{
+    box-shadow:0 0 35px rgba(255,79,216,1);
+  }
+  100%{
+    box-shadow:0 0 15px rgba(255,79,216,.5);
+  }
+}
+
+@keyframes shine{
+  0%{
+    left:-100%;
+  }
+  50%,100%{
+    left:150%;
+  }
+}
