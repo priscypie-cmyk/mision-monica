@@ -216,3 +216,20 @@ body:after{
     left:150%;
   }
 }
+.hero-placeholder{
+  height:120px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:50px;
+  animation:floatHero 3s ease-in-out infinite;
+}
+
+@keyframes floatHero{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
