@@ -1087,7 +1087,7 @@ a{
     letter-spacing:.22em;
 }
 
-.mission-introduction strong{
+.mission-introduction > strong{
     display:block;
     line-height:1.5;
     font-size:2rem;
