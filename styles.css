@@ -262,3 +262,35 @@ body:after{
 #startButton{
   margin-top:25px;
 }
+/* ESCENARIO VIP PORTADA */
+
+#intro{
+  position:relative;
+  text-align:center;
+}
+
+#intro h1{
+  font-size:clamp(42px,12vw,60px);
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+#intro h2{
+  font-size:24px;
+  letter-spacing:5px;
+}
+
+#intro .subtitle{
+  font-size:16px;
+  opacity:.9;
+  padding:0 15px;
+}
+
+#intro::before{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  background:radial-gradient(circle,rgba(255,79,216,.35),transparent 70%);
+  z-index:-1;
+}
