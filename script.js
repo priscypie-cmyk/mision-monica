@@ -33,22 +33,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 100);
 
   startButton.addEventListener("click", () => {
-    missionAudio.volume = 0.35;
+
+    missionAudio.currentTime = 0;
+    missionAudio.volume = 0.45;
     missionAudio.play().catch(() => {});
-    
+
     intro.classList.add("hide-scene");
 
     setTimeout(() => {
 
         intro.classList.add("hidden");
-
         main.classList.remove("hidden");
 
         requestAnimationFrame(() => {
             main.classList.add("show-scene");
         });
 
-    },700);
+    }, 700);
 
 });
 
