@@ -1,513 +1,911 @@
+/* =========================================================
+   MISIÓN MÓNICA · LEVEL 5
+   VERSIÓN 2
+========================================================= */
+
+
+/* ---------- VARIABLES ---------- */
+
+:root{
+  --bg-dark:#090514;
+  --bg-purple:#160b2f;
+  --purple:#8b5cf6;
+  --purple-light:#c084fc;
+  --pink:#ff4fd8;
+  --pink-light:#ff9ceb;
+  --blue:#58d5ff;
+  --white:#ffffff;
+  --text-soft:#e9dcff;
+  --glass:rgba(25,12,52,.74);
+  --glass-light:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.18);
+  --shadow-dark:0 20px 60px rgba(0,0,0,.55);
+}
+
+
+/* ---------- REINICIO GENERAL ---------- */
+
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  font-family:Poppins,sans-serif;
-  background:
-    radial-gradient(circle at top,#ff4fd8,#6d3cff 35%,#12001f 75%);
-  color:#fff;
-  overflow-x:hidden;
-}
-
-body:before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.6) 1px,transparent 1px);
-  background-size:40px 40px;
-  opacity:.18;
-  pointer-events:none;
-  animation:stars 30s linear infinite;
-}
-
-@keyframes stars{
-  from{transform:translateY(0)}
-  to{transform:translateY(40px)}
-}
-
-.screen{
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
+  min-height:100svh;
+  overflow-x:hidden;
+  color:var(--white);
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(139,92,246,.25),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #120821 0%,
+      #080410 52%,
+      #120821 100%
+    );
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+a{
+  font:inherit;
+}
+
+button{
+  border:none;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
 .hidden{
   display:none !important;
 }
 
-.card{
-  width:min(92vw,420px);
-  padding:28px 24px;
-  border-radius:28px;
-  background:rgba(255,255,255,.12);
-  backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 20px 60px rgba(0,0,0,.45);
-  text-align:center;
-}
 
-.card h2,
-.card h3,
-h1{
-  font-family:Orbitron,sans-serif;
-  line-height:1.25;
-  margin-bottom:18px;
-}
+/* =========================================================
+   PANTALLAS GENERALES
+========================================================= */
 
-.card p{
-  line-height:1.7;
-  font-size:15px;
-  margin:14px 0;
-}
-
-button,a{
-  display:block;
+.screen{
   width:100%;
-  margin:12px 0;
-  padding:15px;
-  border-radius:999px;
-  text-decoration:none;
-  border:none;
-  font-weight:700;
-  transition:.25s;
+  min-height:100vh;
+  min-height:100svh;
+  position:relative;
 }
 
-button{
-  background:linear-gradient(90deg,#8b5cf6,#c084fc);
-  color:#fff;
+.intro-screen,
+.mission-screen{
+  overflow:hidden;
 }
 
-a{
-  background:#fff;
-  color:#5b21b6;
-}
 
-button:hover,a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 30px rgba(160,120,255,.45);
-}
+/* =========================================================
+   PANTALLA DE CARGA
+========================================================= */
 
-/* CONTADOR */
-#countdown{
+.loading-screen{
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:20px auto;
-  width:100%;
-  font-weight:700;
-}
-
-#countdown div{
-  min-width:70px;
-  padding:12px;
-  border-radius:15px;
-  background:rgba(255,255,255,.12);
-  text-align:center;
-}
-
-/* ANIMACIONES DE ENTRADA */
-
-#intro h1 {
-  animation: titleGlow 2s ease-in-out infinite alternate;
-}
-
-#intro .top-text {
-  animation: fadeIn 1.5s ease forwards;
-}
-
-#intro .subtitle {
-  animation: fadeIn 2s ease forwards;
-}
-
-#startButton {
-  animation: pulseButton 2s infinite;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to {
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@keyframes titleGlow {
-  from {
-    text-shadow:0 0 10px rgba(192,132,252,.5);
-  }
-  to {
-    text-shadow:0 0 30px rgba(192,132,252,1);
-  }
-}
-
-@keyframes pulseButton {
-  0% {
-    transform:scale(1);
-  }
-  50% {
-    transform:scale(1.05);
-  }
-  100% {
-    transform:scale(1);
-  }
-}
-body:after{
-  content:"";
+  justify-content:center;
+  padding:28px 22px;
   position:fixed;
   inset:0;
-  background:
-  radial-gradient(circle at 20% 20%,rgba(255,0,200,.25),transparent 25%),
-  radial-gradient(circle at 80% 30%,rgba(120,80,255,.25),transparent 25%);
-  pointer-events:none;
-}
-/* BOTÓN VIP K-POP */
-
-#startButton{
-  position:relative;
+  z-index:999;
   overflow:hidden;
-  background:linear-gradient(90deg,#ff4fd8,#8b5cf6);
-  box-shadow:0 0 20px rgba(255,79,216,.7);
-  letter-spacing:1px;
-  animation:vipPulse 2s infinite;
+  text-align:center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,79,216,.18),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      #080410,
+      #180b35 52%,
+      #080410
+    );
 }
 
-#startButton::before{
+.loading-screen::before,
+.loading-screen::after{
   content:"";
   position:absolute;
-  top:0;
-  left:-100%;
-  width:60%;
-  height:100%;
-  background:linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,.7),
-    transparent
-  );
-  animation:shine 3s infinite;
+  border-radius:50%;
+  filter:blur(55px);
+  opacity:.55;
 }
 
-@keyframes vipPulse{
-  0%{
-    box-shadow:0 0 15px rgba(255,79,216,.5);
-  }
-  50%{
-    box-shadow:0 0 35px rgba(255,79,216,1);
-  }
-  100%{
-    box-shadow:0 0 15px rgba(255,79,216,.5);
-  }
+.loading-screen::before{
+  width:280px;
+  height:280px;
+  top:-100px;
+  right:-90px;
+  background:var(--pink);
 }
 
-@keyframes shine{
-  0%{
-    left:-100%;
-  }
-  50%,100%{
-    left:150%;
-  }
-}
-.hero-placeholder{
-  height:120px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:50px;
-  animation:floatHero 3s ease-in-out infinite;
+.loading-screen::after{
+  width:300px;
+  height:300px;
+  bottom:-130px;
+  left:-120px;
+  background:var(--purple);
 }
 
-@keyframes floatHero{
-  0%,100%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(-10px);
-  }
-}
-/* AJUSTE DE ESPACIADO PORTADA K-POP */
-
-#intro{
-  gap:18px;
-}
-
-#intro h1{
-  margin:20px 0 10px;
-  line-height:1.15;
-}
-
-#intro h2{
-  margin:10px 0 20px;
-}
-
-#intro .subtitle{
-  max-width:320px;
-  margin:20px auto;
-  line-height:1.7;
-}
-
-.hero-placeholder{
-  height:160px;
-  margin:15px 0;
-}
-
-#startButton{
-  margin-top:25px;
-}
-/* ESCENARIO VIP PORTADA */
-
-#intro{
+.loading-content{
+  width:min(100%,390px);
   position:relative;
+  z-index:2;
+}
+
+.loading-code{
+  margin-bottom:18px;
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:3px;
+}
+
+.loading-content h1{
+  margin-bottom:28px;
+  font-size:clamp(27px,8vw,42px);
+  line-height:1.08;
+  text-shadow:
+    0 0 15px rgba(255,79,216,.7),
+    0 0 35px rgba(139,92,246,.4);
+}
+
+.loading-bar{
+  width:100%;
+  height:12px;
+  padding:2px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  box-shadow:
+    inset 0 0 10px rgba(0,0,0,.6),
+    0 0 20px rgba(139,92,246,.25);
+}
+
+.loading-bar span{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:999px;
+  background:
+    linear-gradient(
+      90deg,
+      var(--purple),
+      var(--pink),
+      var(--blue)
+    );
+  box-shadow:
+    0 0 14px rgba(255,79,216,.85);
+  transition:width .2s linear;
+}
+
+.loading-message{
+  margin-top:16px;
+  color:var(--text-soft);
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+.intro-screen{
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:
+    calc(30px + env(safe-area-inset-top))
+    16px
+    calc(34px + env(safe-area-inset-bottom));
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(255,79,216,.23),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 12% 70%,
+      rgba(88,213,255,.15),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #170a31 0%,
+      #090514 55%,
+      #120821 100%
+    );
+}
+
+.intro-screen::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.7;
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.9) 1px,
+      transparent 1.5px
+    );
+  background-size:32px 32px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 72%
+    );
+}
+
+.intro-glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  pointer-events:none;
+  opacity:.45;
+}
+
+.intro-glow-one{
+  width:290px;
+  height:290px;
+  top:-90px;
+  right:-120px;
+  background:var(--pink);
+}
+
+.intro-glow-two{
+  width:320px;
+  height:320px;
+  bottom:-130px;
+  left:-140px;
+  background:var(--purple);
+}
+
+.intro-content{
+  width:min(100%,470px);
+  position:relative;
+  z-index:2;
   text-align:center;
 }
 
-#intro h1{
-  font-size:clamp(42px,12vw,60px);
-  letter-spacing:3px;
+.mission-label{
+  margin-top:4px;
+  color:var(--pink-light);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:4px;
+  text-shadow:0 0 12px rgba(255,79,216,.8);
+}
+
+.main-title{
+  margin-top:8px;
+  line-height:.9;
   text-transform:uppercase;
 }
 
-#intro h2{
-  font-size:24px;
-  letter-spacing:5px;
+.main-title span{
+  display:block;
+  color:var(--white);
+  font-size:clamp(35px,10vw,58px);
+  font-weight:900;
+  letter-spacing:4px;
+  text-shadow:
+    0 0 8px rgba(255,255,255,.45),
+    0 0 18px rgba(139,92,246,.65);
 }
 
-#intro .subtitle{
-  font-size:16px;
-  opacity:.9;
-  padding:0 15px;
+.main-title strong{
+  display:block;
+  margin-top:7px;
+  color:var(--pink-light);
+  font-size:clamp(48px,14vw,78px);
+  font-weight:1000;
+  letter-spacing:1px;
+  text-shadow:
+    0 0 8px rgba(255,255,255,.65),
+    0 0 18px rgba(255,79,216,.9),
+    0 0 42px rgba(139,92,246,.75);
 }
 
-#intro::before{
+.level-title{
+  margin-top:12px;
+  color:#fff7ae;
+  font-size:clamp(17px,5vw,23px);
+  font-weight:900;
+  letter-spacing:3px;
+  text-shadow:
+    0 0 10px rgba(255,233,100,.6),
+    0 0 24px rgba(255,79,216,.45);
+}
+
+
+/* ---------- IMAGEN PRINCIPAL ---------- */
+
+.hero-image{
+  width:min(94vw,440px);
+  margin:16px auto 15px;
+  position:relative;
+  z-index:1;
+}
+
+.hero-image::before{
   content:"";
   position:absolute;
-  width:260px;
-  height:260px;
-  background:radial-gradient(circle,rgba(255,79,216,.35),transparent 70%);
+  inset:7% 5%;
   z-index:-1;
-}
-/* PASE VIP K-POP */
-
-#main .card{
-  background:
-  linear-gradient(
-    145deg,
-    rgba(255,79,216,.18),
-    rgba(139,92,246,.18)
-  ),
-  rgba(255,255,255,.10);
-
-  border:1px solid rgba(255,255,255,.35);
-  box-shadow:
-  0 0 40px rgba(255,79,216,.25),
-  0 20px 60px rgba(0,0,0,.45);
-}
-
-
-#main .badge{
-  display:inline-block;
-  padding:8px 18px;
   border-radius:30px;
-  background:linear-gradient(90deg,#ff4fd8,#8b5cf6);
-  box-shadow:0 0 20px rgba(255,79,216,.6);
+  filter:blur(24px);
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,79,216,.58),
+      rgba(139,92,246,.22) 48%,
+      transparent 74%
+    );
+}
+
+.hero-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:26px;
+  box-shadow:
+    0 0 28px rgba(255,79,216,.43),
+    0 22px 50px rgba(0,0,0,.6);
+  animation:heroEntrance 1s ease both;
+}
+
+
+/* ---------- TEXTO PORTADA ---------- */
+
+.intro-copy{
+  width:min(100%,380px);
+  margin:0 auto 18px;
+  color:var(--text-soft);
+  font-size:15px;
+  line-height:1.55;
+}
+
+.intro-copy strong{
+  display:block;
+  margin-top:5px;
+  color:var(--white);
+}
+
+
+/* ---------- BOTÓN PRINCIPAL ---------- */
+
+.primary-button{
+  width:min(100%,360px);
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:0 auto;
+  padding:15px 24px;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  color:var(--white);
+  border:1px solid rgba(255,255,255,.34);
+  border-radius:18px;
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #db2777 58%,
+      #7c3aed
+    );
+  box-shadow:
+    0 0 24px rgba(255,79,216,.42),
+    0 14px 30px rgba(0,0,0,.38);
+  font-size:16px;
+  font-weight:1000;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  animation:buttonPulse 2.2s ease-in-out infinite;
+}
+
+.primary-button::before{
+  content:"";
+  width:70px;
+  height:180%;
+  position:absolute;
+  top:-40%;
+  left:-95px;
+  transform:rotate(22deg);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.48),
+      transparent
+    );
+  animation:buttonShine 3.2s ease-in-out infinite;
+}
+
+.primary-button span{
+  font-size:21px;
+}
+
+.primary-button:active{
+  transform:scale(.97);
+}
+
+.tap-message{
+  margin-top:11px;
+  color:rgba(255,255,255,.58);
+  font-size:11px;
+  letter-spacing:1.5px;
+}
+
+
+/* =========================================================
+   PANEL DE LA MISIÓN
+========================================================= */
+
+.mission-screen{
+  display:flex;
+  justify-content:center;
+  padding:
+    calc(28px + env(safe-area-inset-top))
+    15px
+    calc(38px + env(safe-area-inset-bottom));
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(139,92,246,.25),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #080410,
+      #140826 55%,
+      #080410
+    );
+}
+
+.mission-background{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.7;
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+  background-size:30px 30px;
+}
+
+.mission-panel{
+  width:min(100%,520px);
+  margin:auto;
+  padding:24px 17px 22px;
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:30px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(35,17,69,.9),
+      rgba(10,5,24,.92)
+    );
+  box-shadow:
+    0 0 32px rgba(139,92,246,.28),
+    var(--shadow-dark);
+}
+
+.mission-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,.08),
+      transparent 25%,
+      transparent 75%,
+      rgba(255,79,216,.06)
+    );
+}
+
+
+/* ---------- ENCABEZADO ---------- */
+
+.panel-header{
+  position:relative;
+  text-align:center;
+}
+
+.system-status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+  padding:7px 13px;
+  color:#b8ffdc;
+  border:1px solid rgba(83,255,171,.25);
+  border-radius:999px;
+  background:rgba(22,101,52,.18);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.6px;
+}
+
+.system-status span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#4dff9c;
+  box-shadow:0 0 12px #4dff9c;
+  animation:statusBlink 1.4s infinite;
+}
+
+.panel-small-title{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.panel-header h2{
+  margin-top:5px;
+  color:var(--pink-light);
+  font-size:clamp(45px,13vw,72px);
+  line-height:.95;
+  font-weight:1000;
+  text-shadow:
+    0 0 14px rgba(255,79,216,.9),
+    0 0 35px rgba(139,92,246,.65);
+}
+
+.panel-level{
+  margin-top:10px;
+  color:#fff4a8;
+  font-size:17px;
+  font-weight:900;
   letter-spacing:2px;
 }
 
 
-#main h2{
-  font-size:40px;
-  letter-spacing:4px;
-  margin:18px 0 5px;
+/* ---------- INTRODUCCIÓN ---------- */
+
+.mission-introduction{
+  margin:24px 0 18px;
+  padding:17px 15px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.12);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
 }
 
-
-#main h3{
-  letter-spacing:3px;
-}
-
-
-.invite{
-  line-height:1.7;
-  opacity:.95;
-}
-/* TARJETA PASE VIP */
-
-#main .card{
-  position:relative;
-  overflow:hidden;
-}
-
-#main .card::before{
-  content:"VIP PASS";
-  position:absolute;
-  top:18px;
-  right:-35px;
-  transform:rotate(35deg);
-  background:linear-gradient(90deg,#ff4fd8,#8b5cf6);
-  padding:8px 45px;
-  font-size:12px;
-  letter-spacing:3px;
-  font-weight:700;
-  box-shadow:0 0 20px rgba(255,79,216,.5);
-}
-
-#main .info{
-  margin-top:25px;
-  padding:20px 0;
-  border-top:1px solid rgba(255,255,255,.25);
-  border-bottom:1px solid rgba(255,255,255,.25);
-}
-
-#main .row{
-  margin:18px 0;
-}
-
-#main .emoji{
-  font-size:28px;
-}
-/* NOMBRE DEL EVENTO */
-
-.event-name{
-  margin:15px 0;
+.mission-introduction p{
+  color:var(--text-soft);
   font-size:14px;
-  letter-spacing:3px;
-  font-weight:700;
-  color:#ffd6ff;
-  text-shadow:0 0 15px rgba(255,79,216,.8);
+  line-height:1.5;
 }
-/* IMAGEN PRINCIPAL GUERRERAS K-POP */
 
-.hero-image{
-  width:min(94vw,430px);
-  margin:8px auto 18px;
-  position:relative;
+.mission-introduction strong{
+  display:block;
+  margin-top:5px;
+  color:var(--white);
+  font-size:19px;
+}
+
+
+/* ---------- DATOS DEL EVENTO ---------- */
+
+.event-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+}
+
+.event-card{
+  min-height:95px;
   display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 13px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:19px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.09),
+      rgba(255,255,255,.025)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.09);
+}
+
+.event-card-full{
+  grid-column:1 / -1;
+}
+
+.event-icon{
+  flex:0 0 auto;
+  font-size:28px;
+  filter:drop-shadow(0 0 10px rgba(255,79,216,.45));
+}
+
+.event-card p{
+  margin-bottom:4px;
+  color:var(--pink-light);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.6px;
+}
+
+.event-card strong{
+  display:block;
+  font-size:15px;
+  line-height:1.25;
+}
+
+
+/* ---------- CUENTA REGRESIVA ---------- */
+
+.countdown-section{
+  margin-top:18px;
+  padding:20px 10px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(139,92,246,.16),
+      transparent 75%
+    ),
+    rgba(255,255,255,.025);
+}
+
+.countdown-label{
+  margin-bottom:14px;
+  text-align:center;
+  color:var(--blue);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.countdown{
+  display:flex;
+  align-items:flex-start;
   justify-content:center;
-  z-index:1;
+  gap:5px;
 }
 
-.hero-image::before{
-  content:"";
-  position:absolute;
-  inset:8% 5%;
-  background:radial-gradient(
-    circle,
-    rgba(255,79,216,.55),
-    rgba(139,92,246,.25) 45%,
-    transparent 72%
-  );
-  filter:blur(22px);
-  z-index:-1;
+.time-box{
+  width:61px;
+  text-align:center;
 }
 
-.hero-image img{
+.time-box span{
   display:block;
-  width:100%;
-  height:auto;
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.28);
+  padding:10px 4px;
+  color:var(--white);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.11),
+      rgba(255,255,255,.025)
+    );
   box-shadow:
-    0 0 25px rgba(255,79,216,.45),
-    0 20px 45px rgba(0,0,0,.55);
-  animation:heroEntrance 1.2s ease both;
+    inset 0 1px 0 rgba(255,255,255,.09),
+    0 0 18px rgba(139,92,246,.18);
+  font-size:24px;
+  font-weight:1000;
+  font-variant-numeric:tabular-nums;
 }
 
-@keyframes heroEntrance{
-  from{
-    opacity:0;
-    transform:translateY(24px) scale(.96);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-}
-
-/* CORRECCIÓN DEL TÍTULO EN CELULAR */
-
-#intro{
-  width:100%;
-  min-height:100svh;
-  padding:32px 18px;
-  flex-direction:column;
-  overflow:hidden;
-}
-
-#intro h1{
-  width:100%;
-  max-width:100%;
-  margin:8px auto 4px;
-  padding:0 4px;
-  font-size:clamp(31px,9.5vw,54px);
-  line-height:1.05;
+.time-box small{
+  display:block;
+  margin-top:7px;
+  color:rgba(255,255,255,.62);
+  font-size:8px;
+  font-weight:900;
   letter-spacing:1px;
-  overflow-wrap:anywhere;
 }
 
-#intro h2{
-  margin:4px auto 8px;
-  font-size:clamp(17px,5vw,24px);
-  letter-spacing:3px;
+.time-divider{
+  margin-top:9px;
+  color:var(--pink-light);
+  font-size:23px;
+  font-weight:900;
+  text-shadow:0 0 12px rgba(255,79,216,.8);
 }
 
-#intro .top-text{
-  margin:0 0 5px;
+.countdown-finished{
+  margin-top:12px;
+  text-align:center;
+  color:#fff2a5;
+  font-weight:900;
 }
 
-#intro .subtitle{
-  margin:8px auto 15px;
+
+/* ---------- BOTONES DE ACCIÓN ---------- */
+
+.action-buttons{
+  display:grid;
+  gap:11px;
+  margin-top:18px;
 }
 
-#startButton{
-  max-width:360px;
-  margin:8px auto 20px;
-}
-/* PORTADA CON GUERRERAS */
-
-.hero-placeholder{
-  display:none;
-}
-
-.hero-image{
-  width:min(92vw,430px);
-  margin:10px auto 18px;
+.action-button{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
   position:relative;
-  z-index:1;
-}
-
-.hero-image::before{
-  content:"";
-  position:absolute;
-  inset:8% 5%;
-  background:radial-gradient(
-    circle,
-    rgba(255,79,216,.55),
-    rgba(139,92,246,.25) 45%,
-    transparent 72%
-  );
-  filter:blur(24px);
-  z-index:-1;
-}
-
-.hero-image img{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.28);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:19px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.1),
+      rgba(255,255,255,.035)
+    );
   box-shadow:
-    0 0 28px rgba(255,79,216,.45),
-    0 22px 50px rgba(0,0,0,.55);
-  animation:heroEntrance 1.2s ease both;
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 12px 25px rgba(0,0,0,.24);
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
 }
+
+.action-button::after{
+  content:"›";
+  margin-left:auto;
+  color:rgba(255,255,255,.55);
+  font-size:28px;
+  font-weight:300;
+}
+
+.action-button:active{
+  transform:scale(.98);
+}
+
+.action-button > span{
+  width:43px;
+  height:43px;
+  flex:0 0 43px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:rgba(255,255,255,.08);
+  font-size:23px;
+}
+
+.action-button small{
+  display:block;
+  margin-bottom:3px;
+  color:rgba(255,255,255,.58);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.action-button strong{
+  display:block;
+  font-size:15px;
+}
+
+.whatsapp-button{
+  border-color:rgba(65,255,155,.2);
+}
+
+.location-button{
+  border-color:rgba(88,213,255,.2);
+}
+
+.gift-button{
+  border-color:rgba(255,79,216,.24);
+}
+
+
+/* ---------- PIE DEL PANEL ---------- */
+
+.panel-footer{
+  margin-top:20px;
+  padding:20px 15px 5px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.13);
+}
+
+.vip-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:13px;
+  padding:8px 16px;
+  color:#fff4a8;
+  border:1px solid rgba(255,235,120,.28);
+  border-radius:999px;
+  background:rgba(255,218,84,.08);
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:2px;
+  box-shadow:0 0 18px rgba(255,221,92,.13);
+}
+
+.panel-footer p{
+  color:var(--text-soft);
+  font-size:14px;
+  line-height:1.55;
+}
+
+.panel-footer > strong{
+  display:block;
+  margin-top:9px;
+  color:var(--pink-light);
+  font-size:17px;
+}
+
+
+/* =========================================================
+   TRANSICIONES
+========================================================= */
+
+.fade-out{
+  animation:fadeOut .65s ease forwards;
+}
+
+.reveal-screen{
+  animation:screenReveal .9s ease both;
+}
+
+.panel-enter{
+  animation:panelEntrance .85s ease both;
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
 
 @keyframes heroEntrance{
   from{
@@ -520,44 +918,153 @@ body:after{
   }
 }
 
-/* AJUSTE PORTADA EN CELULAR */
+@keyframes buttonPulse{
+  0%,
+  100%{
+    box-shadow:
+      0 0 22px rgba(255,79,216,.35),
+      0 14px 30px rgba(0,0,0,.38);
+  }
 
-#intro{
-  width:100%;
-  min-height:100svh;
-  padding:28px 16px 36px;
-  flex-direction:column;
-  overflow:hidden;
+  50%{
+    box-shadow:
+      0 0 36px rgba(255,79,216,.62),
+      0 14px 30px rgba(0,0,0,.38);
+  }
 }
 
-#intro h1{
-  width:100%;
-  max-width:100%;
-  margin:8px auto 4px;
-  padding:0 4px;
-  font-size:clamp(30px,9vw,54px);
-  line-height:1.05;
-  letter-spacing:1px;
-  text-align:center;
+@keyframes buttonShine{
+  0%{
+    left:-95px;
+  }
+
+  42%,
+  100%{
+    left:115%;
+  }
 }
 
-#intro h2{
-  margin:4px auto 8px;
-  font-size:clamp(17px,5vw,24px);
-  letter-spacing:3px;
-  text-align:center;
+@keyframes statusBlink{
+  0%,
+  100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.35;
+  }
 }
 
-#intro .top-text{
-  margin:0 0 6px;
+@keyframes fadeOut{
+  to{
+    opacity:0;
+    transform:scale(1.04);
+    visibility:hidden;
+  }
 }
 
-#intro .subtitle{
-  max-width:330px;
-  margin:8px auto 16px;
+@keyframes screenReveal{
+  from{
+    opacity:0;
+    transform:scale(.97);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
-#startButton{
-  width:min(100%,360px);
-  margin:8px auto 20px;
+@keyframes panelEntrance{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.97);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   CELULARES PEQUEÑOS
+========================================================= */
+
+@media (max-width:370px){
+
+  .intro-screen{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .main-title span{
+    font-size:33px;
+  }
+
+  .main-title strong{
+    font-size:47px;
+  }
+
+  .mission-panel{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+  .time-box{
+    width:55px;
+  }
+
+  .time-box span{
+    font-size:21px;
+  }
+
+  .time-divider{
+    font-size:20px;
+  }
+}
+
+
+/* =========================================================
+   TABLET Y PANTALLAS GRANDES
+========================================================= */
+
+@media (min-width:700px){
+
+  .intro-screen{
+    align-items:center;
+  }
+
+  .mission-panel{
+    padding:30px 28px 28px;
+  }
+
+  .action-button:hover{
+    transform:translateY(-2px);
+    border-color:rgba(255,255,255,.35);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.09),
+      0 16px 28px rgba(0,0,0,.3);
+  }
+
+  .primary-button:hover{
+    filter:brightness(1.08);
+  }
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD: REDUCIR ANIMACIONES
+========================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+  }
 }
